@@ -1,6 +1,6 @@
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(array) {
-  const  result = array.map((name) => name.director);
+  const result = array.map((name) => name.director);
   //console.log("EXERCICE 1 ->",  result);
   return result;
 }
@@ -13,11 +13,12 @@ function getMoviesFromDirector(array, director) {
 }
 
 // Exercise 3: Calculate the average of the films of a given director.
-function moviesAverageOfDirector(array, director){
+function moviesAverageOfDirector(array, director) {
   const moviesFrom1Director = getMoviesFromDirector(array, director);
-  const sumScore = moviesFrom1Director.reduce((acc, movie ) => {acc += movie.score; 
+  const sumScore = moviesFrom1Director.reduce((acc, movie) => {
+    acc += movie.score;
     return acc;
-    }, 0);
+  }, 0);
   const averageMovies = Number((sumScore / moviesFrom1Director.length).toFixed(2));
   console.log("EXERCICE 3 ->", averageMovies);
   return averageMovies;
@@ -31,22 +32,23 @@ function orderAlphabetically(array) {
 }
 
 // Exercise 5: Order by year, ascending
+/*Si son iguales, devolveremos 0.
+  Si "a" debe ir ordenado antes que "b", entonces devolvemos un número menor que 0.
+  Si "a" debe ir ordenado después que "b", entonces devolvemos un número mayor que 0.
+*/
 function orderByYear(array) {
-  const arrayYear = array;
-  const year = arrayYear.map((movie)=> movie.year).sort((a, b) => { 
-      if(a.year === b.year) {
-        if(a.title < b.title){
-        
-        }       
-      }
-      if(a.year > b.year) {
+  const sortByYears = array
+    .map((movie) => movie).sort((a, b) => {
+      const yearOrder = a.year - b.year;
+      if (yearOrder === 0) {
+        const titleOrder = a.title - b.title;
         return -1;
-      }
-      return 1;
+      } else return yearOrder;
     });
-    
-
+  console.log(sortByYears);
+  return sortByYears;
 }
+
 
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory() {
@@ -60,7 +62,7 @@ function hoursToMinutes() {
 
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear() {
-  
+
 }
 
 
